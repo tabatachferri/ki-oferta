@@ -3,15 +3,21 @@ import {navbar} from './navbar/navbar.js'
 
 const app = document.getElementById("app")
 navbar(mapaderotas)
-// #home
-let hash = location.hash || "#home"
-// console.log(mapaderotas)
-// console.log(mapaderotas[0])
-// console.log(mapaderotas[0].label)
-const roteador = {}
 
+function renderizarRotaAtual() {
+  const hash = location.hash || "#home"
+  const rota = mapaderotas.find(item => item.url === hash)
 
-window.addEventListener("hashchange",()=>{
-    mapaderotas[1].pagina()
-})
+  if (rota) {
+    rota.pagina(app)
+  } else {
+    // Hash desconhecido: cai para a página inicial
+    mapaderotas[0].pagina(app)
+  }
+}
 
+// Renderiza a página certa assim que a aplicação carrega
+renderizarRotaAtual()
+
+// E a cada troca de hash (clique em um link do menu, por exemplo)
+window.addEventListener("hashchange", renderizarRotaAtual)

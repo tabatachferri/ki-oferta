@@ -35,3 +35,20 @@ Ao observar a documentação e os exemplos, o Bootstrap usa principalmente **cla
 npm install
 npm run dev
 ```
+## Parte B — Construção da Tela 1 (Início)
+
+### B1. O que foi construído?
+
+A Tela 1 · Início do estudo de caso, pensada para 420px de largura: cabeçalho com o nome do app, campo de busca em destaque, texto de apoio, categorias em grade de 2 colunas, rodapé de contribuinte e a barra de navegação inferior. Os ícones ainda não entram nessa etapa — apenas placeholders neutros (`.icone-placeholder`), estilizados por CSS, marcam onde eles vão ficar.
+
+### B2. Onde estão as classes e ids?
+
+O HTML da tela é gerado em `src/js/paginas/home.js`, com classes próprias (`busca-form`, `categoria-item`, `tab-bar`, etc.) — nenhuma classe do Bootstrap é usada nessa tela específica. O estilo correspondente fica em `src/css/inicio.css`, importado em `src/index.html` logo depois de `./css/style.css`, seguindo o mesmo padrão de link já usado no projeto.
+
+Em `src/css/inicio.css`, a paleta, a tipografia e os espaçamentos do estudo de caso viram variáveis CSS declaradas em `:root` (`--cor-primaria`, `--cor-destaque`, `--txt-preco`, `--espaco-cartao`, entre outras), reaproveitáveis pelas próximas telas.
+
+### B3. Decisão: vocês usariam esse framework no KiOferta?
+
+Mantivemos o Bootstrap no projeto, seguindo a orientação do professor de utilizar um framework CSS. Na prática, porém, ele funciona como uma camada de base — reset entre navegadores e componentes genéricos — e não como fonte do visual final das telas.
+
+Isso porque o estudo de caso já define um sistema de design bem específico: paleta própria em `oklch`, uma escala tipográfica de sete degraus e uma grade de espaçamento fixa de 4px. Reaproveitar as classes do Bootstrap (grid, tipografia padrão, cores padrão) exigiria sobrescrever boa parte delas de qualquer forma, o que gera mais atrito de especificidade do que escrever CSS direto com os tokens do case. Por isso, a Tela 1 foi construída inteiramente com CSS próprio, deixando o Bootstrap disponível para uso pontual em outras partes do projeto.

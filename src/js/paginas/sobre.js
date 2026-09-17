@@ -7,7 +7,7 @@ function sobre(app){
 }
 
 export default {
-    url: "#home",
+    url: "#sobre",
     label: "Sobre",
     pagina: sobre
 }

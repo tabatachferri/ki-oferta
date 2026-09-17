@@ -1,0 +1,250 @@
+/* =========================================================
+   TOKENS — cor, tipografia e espaçamento do estudo de caso.
+   Ainda não existe um arquivo de tokens compartilhado no
+   projeto, então eles ficam aqui por enquanto; quando outra
+   tela precisar deles, vale extrair para um css/tokens.css
+   e importar antes das demais folhas de estilo.
+   ========================================================= */
+:root {
+  /* Cores cromáticas */
+  --cor-primaria: oklch(48% 0.15 255);   /* navegação e links · 8,6:1 */
+  --cor-destaque: oklch(56% 0.21 25);    /* preço e ação principal · 5,9:1 */
+
+  /* Tintas de texto */
+  --tinta-1: oklch(22% 0.02 255);        /* texto principal · 16,4:1 */
+  --tinta-2: oklch(46% 0.02 255);        /* texto secundário · 7,4:1 */
+
+  /* Superfícies */
+  --superficie-cartao: oklch(100% 0 0);
+  --superficie-fundo: oklch(96% 0.004 255);
+  --superficie-borda: oklch(90% 0.004 255);
+
+  /* Tipografia — uma família, sete degraus */
+  --fonte-base: Arial, Helvetica, sans-serif;
+  --txt-preco: 2.125rem;  /* 34px */
+  --txt-2xl: 1.5rem;      /* 24px */
+  --txt-xl: 1.1875rem;    /* 19px */
+  --txt-lg: 1rem;         /* 16px */
+  --txt-md: 0.875rem;     /* 14px */
+  --txt-sm: 0.8125rem;    /* 13px */
+  --txt-xs: 0.75rem;      /* 12px */
+
+  /* Grade de 4px — aplicação fixa por contexto */
+  --espaco-margem-tela: 1rem;     /* 16px */
+  --espaco-cartao: 0.75rem;       /* 12px */
+  --espaco-entre-cartoes: 0.5rem; /* 8px */
+  --espaco-entre-secoes: 1.5rem;  /* 24px */
+
+  /* Largura de referência da tela (mobile) */
+  --largura-tela: 420px;
+}
+
+/* =========================================================
+   BASE DA TELA
+   ========================================================= */
+.tela-inicio {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--largura-tela);
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--superficie-fundo);
+  font-family: var(--fonte-base);
+  color: var(--tinta-1);
+}
+
+/* Placeholder neutro para onde os ícones entrarão depois */
+.icone-placeholder {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.icone-placeholder--sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icone-placeholder--claro {
+  border-color: var(--superficie-cartao);
+}
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-entre-cartoes);
+  padding: var(--espaco-margem-tela);
+  color: var(--cor-primaria);
+}
+
+.app-header__titulo {
+  font-size: var(--txt-lg);
+  font-weight: 700;
+  color: var(--tinta-1);
+}
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+.inicio-conteudo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 var(--espaco-margem-tela);
+  gap: var(--espaco-entre-secoes);
+}
+
+.inicio-pergunta {
+  font-size: var(--txt-xl);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--tinta-1);
+}
+
+/* Busca — elemento dominante da tela */
+.busca-form {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-cartao);
+  height: 3rem; /* 48px, conforme componente recorrente "barra de busca" */
+  padding: 0 var(--espaco-cartao);
+  background-color: var(--superficie-cartao);
+  border: 1px solid var(--superficie-borda);
+  border-radius: 0.5rem;
+}
+
+.busca-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--txt-md);
+  color: var(--tinta-1);
+}
+
+.busca-input::placeholder {
+  color: var(--tinta-2);
+}
+
+.busca-botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--cor-destaque);
+  cursor: pointer;
+}
+
+.busca-legenda {
+  margin: calc(var(--espaco-entre-cartoes) * -1) 0 0;
+  font-size: var(--txt-sm);
+  color: var(--tinta-2);
+}
+
+/* Categorias — segundo caminho, em grade de 2 colunas */
+.categorias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-cartao);
+}
+
+.categorias-titulo {
+  margin: 0;
+  font-size: var(--txt-md);
+  font-weight: 700;
+  color: var(--tinta-1);
+}
+
+.categorias-grade {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-entre-cartoes);
+}
+
+.categoria-item {
+  flex: 1 1 calc(50% - var(--espaco-entre-cartoes) / 2);
+  min-width: calc(50% - var(--espaco-entre-cartoes) / 2);
+  padding: var(--espaco-cartao);
+  background-color: var(--superficie-cartao);
+  border: 1px solid var(--superficie-borda);
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: var(--txt-md);
+  color: var(--tinta-1);
+  text-align: left;
+  cursor: pointer;
+}
+
+/* =========================================================
+   RODAPÉ DA TELA (contribuinte)
+   ========================================================= */
+.inicio-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-cartao);
+  padding: var(--espaco-margem-tela);
+  border-top: 1px solid var(--superficie-borda);
+}
+
+.inicio-rodape__texto {
+  font-size: var(--txt-sm);
+  color: var(--tinta-2);
+}
+
+.botao {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: var(--txt-md);
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.botao--secundario {
+  background-color: var(--superficie-cartao);
+  color: var(--cor-primaria);
+  border: 1px solid var(--superficie-borda);
+}
+
+/* =========================================================
+   BARRA DE NAVEGAÇÃO INFERIOR
+   ========================================================= */
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--espaco-entre-cartoes) 0;
+  background-color: var(--superficie-cartao);
+  border-top: 1px solid var(--superficie-borda);
+}
+
+.tab-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: var(--tinta-2);
+}
+
+.tab-bar__item--ativo {
+  color: var(--cor-primaria);
+}
+
+.tab-bar__rotulo {
+  font-size: var(--txt-xs);
+}
